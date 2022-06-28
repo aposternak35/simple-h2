@@ -12,19 +12,19 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-    @GetMapping("/")
+    @GetMapping("/getAllBooks")
     private List getAllBooks(){
         return bookService.getAllBooks();
     }
-    @GetMapping("/{uid}")
+    @GetMapping("/getById{uid}")
     private Book getBook(@PathVariable("uid")long uid){
         return bookService.getBookById(uid);
     }
-    @DeleteMapping("/{uid}")
+    @DeleteMapping("/deleteById{uid}")
     private void deleteBook(@PathVariable("uid")long uid){
         bookService.delete(uid);
     }
-    @PostMapping("/")
+    @PostMapping("/save")
     private long saveBook(@RequestBody Book book){
         bookService.saveOrUpdate(book);
         return book.getUid();
